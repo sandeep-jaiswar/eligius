@@ -1,0 +1,12 @@
+{
+  "name": "@eligius/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./tailwind.config.ts"
+  },
+  "devDependencies": {
+    "@eligius/typescript-config": "workspace:*",
+    "tailwindcss": "^3.4.17"
+  }
+}
