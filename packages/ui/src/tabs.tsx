@@ -46,12 +46,11 @@ const Tabs = ({ children }: TabsProps) => {
 
   // Extract the tabs and tab panels from the children
   const tabs = React.Children.toArray(children).filter(
-    (child) => (child as any).type === Tab
+    (child) => React.isValidElement(child) && child.type === Tab
   );
   const tabPanels = React.Children.toArray(children).filter(
-    (child) => (child as any).type !== Tab
+    (child) => !React.isValidElement(child) || child.type !== Tab
   );
-
   return (
     <div>
       <div className="flex space-x-4">{tabs.map((tab, index) => (
