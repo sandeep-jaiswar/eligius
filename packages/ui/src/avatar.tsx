@@ -74,7 +74,16 @@ const Avatar = ({
       )}
     >
       {src ? (
-        <img src={src} alt={alt} className="object-cover w-full h-full" />
+        <img 
+          src={src} 
+          alt={alt} 
+          className="object-cover w-full h-full" 
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+            // Force re-render to show initials
+            e.currentTarget.parentElement?.classList.add('image-error');
+          }} 
+        />
       ) : (
         <span className={clsx("flex items-center justify-center w-full h-full", textColor)}>
           {initials}
