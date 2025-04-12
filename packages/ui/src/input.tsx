@@ -9,12 +9,12 @@ type InputProps = {
   /**
    * The callback function when the value changes.
    */
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
   /**
    * The type of the input (e.g., text, password, email, etc.).
    */
-  type?: string;
+  type?: "text" | "password" | "email" | "tel" | "number" | "url";
 
   /**
    * The placeholder text for the input.
@@ -27,19 +27,14 @@ type InputProps = {
   disabled?: boolean;
 
   /**
-   * Whether the input has an error state.
+   * Whether the input has an error state or error message.
    */
-  error?: boolean;
+  error?: boolean | string;
 
   /**
    * Optional class names for custom styling.
    */
   className?: string;
-
-  /**
-   * Additional attributes for the input element.
-   */
-  [key: string]: any;
 };
 
 const Input = ({
@@ -52,13 +47,15 @@ const Input = ({
   className,
   ...props
 }: InputProps) => {
+  const errorMessage = typeof error === "string" ? error : "This field is required";
+
   return (
     <div className="relative">
       <input
         type={type}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
+        onChange={onChange}
+        placeholder={placeholder || ""}
         disabled={disabled}
         className={clsx(
           "block w-full px-4 py-2 text-sm rounded-md border",
@@ -69,10 +66,17 @@ const Input = ({
           },
           className
         )}
+        aria-invalid={error ? "true" : "false"}
+        aria-describedby={error ? "input-error" : undefined}
         {...props}
       />
       {error && (
-        <div className="absolute text-xs text-red-500 mt-1">This field is required</div>
+        <div
+          id="input-error"
+          className="absolute text-xs text-red-500 mt-1"
+        >
+          {errorMessage}
+        </div>
       )}
     </div>
   );

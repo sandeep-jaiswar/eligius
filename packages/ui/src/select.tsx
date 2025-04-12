@@ -14,7 +14,7 @@ type SelectProps = {
   /**
    * The callback function when the value changes.
    */
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 
   /**
    * The options for the select input.
@@ -32,19 +32,14 @@ type SelectProps = {
   disabled?: boolean;
 
   /**
-   * Whether the select input has an error state.
+   * Whether the select input has an error state or error message.
    */
-  error?: boolean;
+  error?: boolean | string;
 
   /**
    * Optional class names for custom styling.
    */
   className?: string;
-
-  /**
-   * Additional attributes for the select element.
-   */
-  [key: string]: any;
 };
 
 const Select = ({
@@ -57,11 +52,13 @@ const Select = ({
   className,
   ...props
 }: SelectProps) => {
+  const errorMessage = typeof error === "string" ? error : "This field is required";
+
   return (
     <div className="relative">
       <select
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
         disabled={disabled}
         className={clsx(
           "block w-full px-4 py-2 text-sm rounded-md border",
@@ -72,6 +69,8 @@ const Select = ({
           },
           className
         )}
+        aria-invalid={error ? "true" : "false"}
+        aria-describedby={error ? "select-error" : undefined}
         {...props}
       >
         {placeholder && (
@@ -86,7 +85,12 @@ const Select = ({
         ))}
       </select>
       {error && (
-        <div className="absolute text-xs text-red-500 mt-1">This field is required</div>
+        <div
+          id="select-error"
+          className="absolute text-xs text-red-500 mt-1"
+        >
+          {errorMessage}
+        </div>
       )}
     </div>
   );
