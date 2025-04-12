@@ -74,11 +74,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
           {page}
         </button>
       ))}
-
       {/* Next Page Button */}
       <button
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
+        aria-label="Go to next page"
         className={clsx(
           "px-4 py-2 text-sm font-medium rounded-lg",
           {
