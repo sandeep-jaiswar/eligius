@@ -86,7 +86,7 @@ const Avatar = ({
         />
       ) : (
         <span className={clsx("flex items-center justify-center w-full h-full", textColor)}>
-          {initials}
+          {initials || '?'}
         </span>
       )}
     </div>
