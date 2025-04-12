@@ -34,11 +34,57 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
     onPageChange(page);
   };
 
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
-
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const maxPagesToShow = 5; // Show at most 5 page numbers
+    
+    if (totalPages <= maxPagesToShow) {
+      // Show all pages if total is small
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      // Always show first and last page
+      // Show pages around current page
+      const leftSiblingIndex = Math.max(currentPage - 1, 1);
+      const rightSiblingIndex = Math.min(currentPage + 1, totalPages);
+      
+      // Show ellipsis or additional pages
+      const shouldShowLeftDots = leftSiblingIndex > 2;
+      const shouldShowRightDots = rightSiblingIndex < totalPages - 1;
+      
+      if (!shouldShowLeftDots && shouldShowRightDots) {
+        // Show more pages on the left
+        const leftItemCount = 3;
+        for (let i = 1; i <= leftItemCount; i++) {
+          pageNumbers.push(i);
+        }
+        pageNumbers.push('...');
+        pageNumbers.push(totalPages);
+      } else if (shouldShowLeftDots && !shouldShowRightDots) {
+        // Show more pages on the right
+        pageNumbers.push(1);
+        pageNumbers.push('...');
+        const rightItemCount = 3;
+        for (let i = totalPages - rightItemCount + 1; i <= totalPages; i++) {
+          pageNumbers.push(i);
+        }
+      } else if (shouldShowLeftDots && shouldShowRightDots) {
+        // Show dots on both sides
+        pageNumbers.push(1);
+        pageNumbers.push('...');
+        pageNumbers.push(currentPage - 1);
+        pageNumbers.push(currentPage);
+        pageNumbers.push(currentPage + 1);
+        pageNumbers.push('...');
+        pageNumbers.push(totalPages);
+      }
+    }
+    
+    return pageNumbers;
+  };
+  
+  const pageNumbers = getPageNumbers();
   return (
     <div className="flex items-center justify-center space-x-2">
       {/* Previous Page Button */}
