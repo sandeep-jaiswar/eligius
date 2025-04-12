@@ -91,6 +91,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
       <button
         onClick={handlePrevPage}
         disabled={currentPage === 1}
+        aria-label="Go to previous page"
         className={clsx(
           "px-4 py-2 text-sm font-medium rounded-lg",
           {
@@ -102,7 +103,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
       >
         &lt; Prev
       </button>
-
       {/* Page Numbers */}
       {pageNumbers.map((page) => (
         <button
