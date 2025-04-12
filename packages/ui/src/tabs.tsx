@@ -21,6 +21,8 @@ type TabProps = {
 const Tab = ({ children, isActive, onClick }: TabProps) => (
   <button
     onClick={onClick}
+    role="tab"
+    aria-selected={isActive}
     className={clsx(
       "px-4 py-2 text-sm font-medium",
       {
