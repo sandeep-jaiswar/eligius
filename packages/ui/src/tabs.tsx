@@ -52,14 +52,24 @@ const Tabs = ({ children }: TabsProps) => {
     (child) => !React.isValidElement(child) || child.type !== Tab
   );
   return (
-    <div>
-      <div className="flex space-x-4">{tabs.map((tab, index) => (
-        React.cloneElement(tab as React.ReactElement, {
-          isActive: activeTab === index,
-          onClick: () => setActiveTab(index),
-        })
-      ))}</div>
-      <div>{tabPanels[activeTab]}</div>
+    <div className="tabs-container">
+      <div role="tablist" className="flex space-x-4" aria-label="Tabs">
+        {tabs.map((tab, index) => (
+          React.cloneElement(tab as React.ReactElement, {
+            isActive: activeTab === index,
+            onClick: () => setActiveTab(index),
+            id: `tab-${index}`,
+            'aria-controls': `panel-${index}`,
+          })
+        ))}
+      </div>
+      <div 
+        role="tabpanel" 
+        id={`panel-${activeTab}`}
+        aria-labelledby={`tab-${activeTab}`}
+      >
+        {tabPanels[activeTab]}
+      </div>
     </div>
   );
 };
