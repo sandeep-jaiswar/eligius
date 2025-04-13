@@ -2,6 +2,8 @@ import "./globals.css";
 import "@eligius/ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import GlobalHeader from "../components/global-header";
+import GlobalFooter from "../components/global-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex min-h-screen flex-col">
+          <GlobalHeader />
+          {children}
+          <GlobalFooter />
+        </div>
+      </body>
     </html>
   );
 }
