@@ -55,6 +55,8 @@ export function ChatMessage({
               src="/placeholder.svg?height=200&width=300"
               alt="Shared image"
               className="h-auto max-w-full"
+              width={300}
+              height={200}
             />
           </div>
         ) : message.isGif ? (

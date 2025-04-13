@@ -60,7 +60,7 @@ export const DisabledTab: Story = {
     <Tabs value={value} onValueChange={onValueChange}>
       <Tabs.List>
         <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-        <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
+        <Tabs.Trigger value="tab2" disabled>Tab 2</Tabs.Trigger>
         <Tabs.Trigger value="tab3">Tab 3</Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="tab1">Content 1</Tabs.Content>
