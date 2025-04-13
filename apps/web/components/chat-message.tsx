@@ -65,6 +65,8 @@ export function ChatMessage({
               src="/placeholder.svg?height=150&width=200"
               alt="GIF"
               className="h-auto max-w-full"
+              width={200}
+              height={150}
             />
           </div>
         ) : (

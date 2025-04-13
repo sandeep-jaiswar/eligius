@@ -57,7 +57,12 @@ export const LargeModal: Story = {
         >
           Open Large Modal
         </button>
-        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <div className="p-4">
+            <p>This is an example of content in a large modal.</p>
+            <p className="mt-2">Notice how it adapts to the larger size.</p>
+          </div>
+        </Modal>
       </div>
     );
   },
