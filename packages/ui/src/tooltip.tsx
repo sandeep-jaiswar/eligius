@@ -50,18 +50,24 @@ const Tooltip = ({ content, position = "top", className }: TooltipProps) => {
           className={clsx(
             "absolute z-10 text-sm text-white p-2 rounded bg-black opacity-75",
             {
-              "top-full left-1/2 transform -translate-x-1/2 mt-2": position === "top",
-              "bottom-full left-1/2 transform -translate-x-1/2 mb-2": position === "bottom",
-              "left-full top-1/2 transform -translate-y-1/2 ml-2": position === "left",
-              "right-full top-1/2 transform -translate-y-1/2 mr-2": position === "right",
+              "top-full left-1/2 transform -translate-x-1/2 mt-2":
+                position === "top",
+              "bottom-full left-1/2 transform -translate-x-1/2 mb-2":
+                position === "bottom",
+              "left-full top-1/2 transform -translate-y-1/2 ml-2":
+                position === "left",
+              "right-full top-1/2 transform -translate-y-1/2 mr-2":
+                position === "right",
             },
-            className
+            className,
           )}
         >
           {content}
         </div>
       )}
-      <span className="cursor-pointer">{/* Children that trigger the tooltip */}</span>
+      <span className="cursor-pointer">
+        {/* Children that trigger the tooltip */}
+      </span>
     </div>
   );
 };

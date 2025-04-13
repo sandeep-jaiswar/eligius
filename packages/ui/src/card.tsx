@@ -69,7 +69,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       className,
       ...rest
     },
-    ref
+    ref,
   ) => {
     return (
       <div
@@ -78,7 +78,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           "rounded-2xl transition-shadow duration-200",
           variantMap[variant],
           paddingMap[padding],
-          className
+          className,
         )}
         {...rest}
       >
@@ -98,7 +98,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Card.displayName = "Card";

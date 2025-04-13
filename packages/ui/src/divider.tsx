@@ -22,7 +22,7 @@ interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Controls the thickness of the divider line.
-   * Default values: 
+   * Default values:
    * - Horizontal: `h-px`
    * - Vertical: `w-px`
    * You can override it with Tailwind CSS size classes (e.g., `"h-1"`, `"w-2"`).
@@ -62,7 +62,7 @@ const Divider = ({
   const baseStyles = clsx(
     "flex",
     isVertical ? "flex-col items-center" : "items-center",
-    className
+    className,
   );
 
   const lineClass = clsx(
@@ -86,7 +86,7 @@ const Divider = ({
         <span
           className={clsx(
             "mx-2 text-sm text-muted-foreground whitespace-nowrap",
-            isVertical && "rotate-90 my-2"
+            isVertical && "rotate-90 my-2",
           )}
         >
           {children}

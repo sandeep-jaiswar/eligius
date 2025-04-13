@@ -96,7 +96,7 @@ const Pagination = ({
           {
             "text-gray-400 cursor-not-allowed": currentPage === 1,
             "text-blue-600 hover:bg-blue-100": currentPage > 1,
-          }
+          },
         )}
       >
         &lt; Prev
@@ -124,7 +124,7 @@ const Pagination = ({
               {
                 "bg-blue-600 text-white": page === currentPage,
                 "text-blue-600 hover:bg-blue-100": page !== currentPage,
-              }
+              },
             )}
           >
             {page}
@@ -142,7 +142,7 @@ const Pagination = ({
           {
             "text-gray-400 cursor-not-allowed": currentPage === totalPages,
             "text-blue-600 hover:bg-blue-100": currentPage < totalPages,
-          }
+          },
         )}
       >
         Next &gt;

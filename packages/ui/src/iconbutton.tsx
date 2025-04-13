@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 
 type IconButtonProps = {
   /**
-   * The icon to be rendered inside the button. 
+   * The icon to be rendered inside the button.
    * You can pass any icon component here, e.g., from react-icons.
    */
   icon: React.ReactNode;
@@ -56,7 +56,7 @@ const IconButton = ({
         "flex items-center justify-center rounded-full bg-transparent hover:bg-gray-200 focus:outline-none disabled:opacity-50 transition-all",
         size,
         color,
-        className
+        className,
       )}
       aria-label={ariaLabel}
       disabled={disabled}
@@ -68,4 +68,3 @@ const IconButton = ({
 };
 
 export default IconButton;
-

@@ -1,6 +1,6 @@
-import Button from '@eligius/ui/button';
+import Button from "@eligius/ui/button";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Atomic/Button",

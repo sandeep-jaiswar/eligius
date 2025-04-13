@@ -1,35 +1,38 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import Button from "@eligius/ui/button"
-import Input from "@eligius/ui/input"
-import Card from "@eligius/ui/card"
-import { ArrowLeft, User, Mail, Lock } from "lucide-react"
-import { GoogleLogin } from "../../components/google-login"
+import { ChangeEvent, useState } from "react";
+import Link from "next/link";
+import Button from "@eligius/ui/button";
+import Input from "@eligius/ui/input";
+import Card from "@eligius/ui/card";
+import { ArrowLeft, User, Mail, Lock } from "lucide-react";
+import { GoogleLogin } from "../../components/google-login";
 
 export default function RegisterPage() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle registration logic here
-    console.log("Register with:", name, email, password)
-  }
+    console.log("Register with:", name, email, password);
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-white to-gray-50 p-4">
       <div className="w-full max-w-md">
-        <Link href="/" className="mb-6 flex items-center text-sm font-medium text-gray-600 hover:text-blue-600">
+        <Link
+          href="/"
+          className="mb-6 flex items-center text-sm font-medium text-gray-600 hover:text-blue-600"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to home
         </Link>
 
-        <Card className="border-gray-200 shadow-lg" >
+        <Card className="border-gray-200 shadow-lg">
           <GoogleLogin />
 
           <div className="relative">
@@ -37,7 +40,9 @@ export default function RegisterPage() {
               <span className="w-full border-t border-gray-200" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500">Or continue with</span>
+              <span className="bg-white px-2 text-gray-500">
+                Or continue with
+              </span>
             </div>
           </div>
 
@@ -51,7 +56,7 @@ export default function RegisterPage() {
                   placeholder="John Doe"
                   className="pl-10"
                   value={name}
-                  onChange={(e: any) => setName(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                   required
                 />
               </div>
@@ -66,7 +71,7 @@ export default function RegisterPage() {
                   placeholder="name@example.com"
                   className="pl-10"
                   value={email}
-                  onChange={(e: any) => setEmail(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -81,17 +86,20 @@ export default function RegisterPage() {
                   placeholder="••••••••"
                   className="pl-10"
                   value={password}
-                  onChange={(e: any) => setPassword(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                   required
                 />
               </div>
             </div>
-            <Button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-violet-500 text-white">
+            <Button
+              type="submit"
+              className="w-full bg-gradient-to-r from-blue-500 to-violet-500 text-white"
+            >
               Create Account
             </Button>
           </form>
         </Card>
       </div>
     </div>
-  )
+  );
 }

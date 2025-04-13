@@ -23,7 +23,12 @@ type PopoverProps = {
   disabled?: boolean;
 };
 
-const Popover = ({ content, children, position = "top", disabled = false }: PopoverProps) => {
+const Popover = ({
+  content,
+  children,
+  position = "top",
+  disabled = false,
+}: PopoverProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +45,12 @@ const Popover = ({ content, children, position = "top", disabled = false }: Popo
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (popoverRef.current && !popoverRef.current.contains(e.target as Node) && triggerRef.current && !triggerRef.current.contains(e.target as Node)) {
+      if (
+        popoverRef.current &&
+        !popoverRef.current.contains(e.target as Node) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -76,7 +86,7 @@ const Popover = ({ content, children, position = "top", disabled = false }: Popo
           ref={popoverRef}
           className={clsx(
             "absolute z-50 bg-white text-sm text-gray-700 shadow-md rounded-md p-3",
-            popoverPositionClasses[position]
+            popoverPositionClasses[position],
           )}
         >
           {content}

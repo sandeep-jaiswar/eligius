@@ -52,7 +52,8 @@ const Select = ({
   className,
   ...props
 }: SelectProps) => {
-  const errorMessage = typeof error === "string" ? error : "This field is required";
+  const errorMessage =
+    typeof error === "string" ? error : "This field is required";
 
   return (
     <div className="relative">
@@ -67,7 +68,7 @@ const Select = ({
             "border-red-500": error,
             "bg-gray-100 cursor-not-allowed": disabled,
           },
-          className
+          className,
         )}
         aria-invalid={error ? "true" : "false"}
         aria-describedby={error ? "select-error" : undefined}
@@ -85,10 +86,7 @@ const Select = ({
         ))}
       </select>
       {error && (
-        <div
-          id="select-error"
-          className="absolute text-xs text-red-500 mt-1"
-        >
+        <div id="select-error" className="absolute text-xs text-red-500 mt-1">
           {errorMessage}
         </div>
       )}

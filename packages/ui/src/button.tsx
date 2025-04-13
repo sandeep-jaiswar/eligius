@@ -28,7 +28,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "start",
       ...props
     },
-    ref
+    ref,
   ) => {
     const isDisabled = disabled || loading;
 
@@ -51,7 +51,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const iconSpacing =
-      icon && children ? (iconPosition === "start" ? "gap-2" : "gap-2 flex-row-reverse") : "";
+      icon && children
+        ? iconPosition === "start"
+          ? "gap-2"
+          : "gap-2 flex-row-reverse"
+        : "";
 
     return (
       <button
@@ -62,7 +66,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizeClasses[size],
           iconSpacing,
           fullWidth && "w-full",
-          className
+          className,
         )}
         disabled={isDisabled}
         {...props}
@@ -77,7 +81,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

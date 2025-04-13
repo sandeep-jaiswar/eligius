@@ -50,7 +50,12 @@ const Alert = ({
   };
 
   return (
-    <div className={clsx("flex items-start p-4 rounded-lg shadow-md", alertTypeStyles[type])}>
+    <div
+      className={clsx(
+        "flex items-start p-4 rounded-lg shadow-md",
+        alertTypeStyles[type],
+      )}
+    >
       <div className="flex-grow">
         <p>{message}</p>
         {onAction && actionLabel && (

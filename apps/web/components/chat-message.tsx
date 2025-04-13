@@ -1,31 +1,45 @@
-import Avatar from "@eligius/ui/avatar"
-import { clsx } from 'clsx';
+import Avatar from "@eligius/ui/avatar";
+import { clsx } from "clsx";
+import Image from "next/image";
 
 type ChatMessageProps = {
   message: {
-    id: string
-    content: string
-    timestamp: Date
-    isImage?: boolean
-    isGif?: boolean
-  }
-  isOwnMessage: boolean
-  senderName: string
-  senderAvatar: string
-}
+    id: string;
+    content: string;
+    timestamp: Date;
+    isImage?: boolean;
+    isGif?: boolean;
+  };
+  isOwnMessage: boolean;
+  senderName: string;
+  senderAvatar: string;
+};
 
-export function ChatMessage({ message, isOwnMessage, senderName, senderAvatar }: ChatMessageProps) {
+export function ChatMessage({
+  message,
+  isOwnMessage,
+  senderName,
+  senderAvatar,
+}: ChatMessageProps) {
   const formattedTime = new Intl.DateTimeFormat("en-US", {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
-  }).format(message.timestamp)
+  }).format(message.timestamp);
 
   return (
-    <div className={clsx("flex items-start gap-2", isOwnMessage && "flex-row-reverse")}>
-      <Avatar className="h-8 w-8" src={senderAvatar || "/placeholder.svg"} alt={senderName} initials={senderName[0]}>
-
-      </Avatar>
+    <div
+      className={clsx(
+        "flex items-start gap-2",
+        isOwnMessage && "flex-row-reverse",
+      )}
+    >
+      <Avatar
+        className="h-8 w-8"
+        src={senderAvatar || "/placeholder.svg"}
+        alt={senderName}
+        initials={senderName[0]}
+      ></Avatar>
 
       <div
         className={clsx(
@@ -37,19 +51,32 @@ export function ChatMessage({ message, isOwnMessage, senderName, senderAvatar }:
       >
         {message.isImage ? (
           <div className="overflow-hidden rounded">
-            <img src="/placeholder.svg?height=200&width=300" alt="Shared image" className="h-auto max-w-full" />
+            <Image
+              src="/placeholder.svg?height=200&width=300"
+              alt="Shared image"
+              className="h-auto max-w-full"
+            />
           </div>
         ) : message.isGif ? (
           <div className="overflow-hidden rounded">
-            <img src="/placeholder.svg?height=150&width=200" alt="GIF" className="h-auto max-w-full" />
+            <Image
+              src="/placeholder.svg?height=150&width=200"
+              alt="GIF"
+              className="h-auto max-w-full"
+            />
           </div>
         ) : (
           <p>{message.content}</p>
         )}
-        <div className={clsx("mt-1 text-right text-xs", isOwnMessage ? "text-blue-100" : "text-gray-500")}>
+        <div
+          className={clsx(
+            "mt-1 text-right text-xs",
+            isOwnMessage ? "text-blue-100" : "text-gray-500",
+          )}
+        >
           {formattedTime}
         </div>
       </div>
     </div>
-  )
+  );
 }

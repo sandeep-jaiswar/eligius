@@ -17,7 +17,7 @@ type AvatarProps = {
   initials?: string;
 
   /**
-   * The size of the avatar. 
+   * The size of the avatar.
    * Options: "sm", "md", "lg", "xl"
    */
   size?: "sm" | "md" | "lg" | "xl";
@@ -70,23 +70,28 @@ const Avatar = ({
         borderColor,
         "border-2", // Adds a border around the avatar
         bgColor,
-        className
+        className,
       )}
     >
       {src ? (
-        <img 
-          src={src} 
-          alt={alt} 
-          className="object-cover w-full h-full" 
+        <img
+          src={src}
+          alt={alt}
+          className="object-cover w-full h-full"
           onError={(e) => {
-            e.currentTarget.style.display = 'none';
+            e.currentTarget.style.display = "none";
             // Force re-render to show initials
-            e.currentTarget.parentElement?.classList.add('image-error');
-          }} 
+            e.currentTarget.parentElement?.classList.add("image-error");
+          }}
         />
       ) : (
-        <span className={clsx("flex items-center justify-center w-full h-full", textColor)}>
-          {initials || '?'}
+        <span
+          className={clsx(
+            "flex items-center justify-center w-full h-full",
+            textColor,
+          )}
+        >
+          {initials || "?"}
         </span>
       )}
     </div>
