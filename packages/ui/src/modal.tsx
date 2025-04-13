@@ -70,7 +70,12 @@ const Modal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className={clsx("bg-white rounded-lg shadow-lg p-6", modalSizeStyles[size])}>
+      <div
+        className={clsx(
+          "bg-white rounded-lg shadow-lg p-6",
+          modalSizeStyles[size],
+        )}
+      >
         {/* Modal Header */}
         {title && (
           <div className="flex items-center justify-between mb-4">

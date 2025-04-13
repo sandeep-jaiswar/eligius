@@ -4,20 +4,17 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001 --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint --max-warnings 0",
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@eligius/ui": "workspace:*",
-    "next": "^15.2.1",
+    "lucide-react": "^0.487.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.2.2",
     "@eligius/eslint-config": "workspace:*",
     "@eligius/tailwind-config": "workspace:*",
     "@eligius/typescript-config": "workspace:*",
@@ -28,6 +25,9 @@
     "eslint": "^9.23.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
-    "typescript": "5.8.2"
+    "typescript": "5.0.3",
+    "storybook": "^8.0.0",
+    "@storybook/react": "^8.0.0",
+    "@storybook/addon-essentials": "^8.0.0"
   }
 }

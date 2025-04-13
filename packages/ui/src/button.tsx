@@ -28,12 +28,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "start",
       ...props
     },
-    ref
+    ref,
   ) => {
     const isDisabled = disabled || loading;
 
     const baseStyles =
-      "inline-flex items-center justify-center rounded-2xl font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+      "inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
 
     const variantClasses: Record<Variant, string> = {
       primary: "bg-primary text-white hover:bg-primary/90",
@@ -51,7 +51,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const iconSpacing =
-      icon && children ? (iconPosition === "start" ? "gap-2" : "gap-2 flex-row-reverse") : "";
+      icon && children
+        ? iconPosition === "start"
+          ? "gap-2"
+          : "gap-2 flex-row-reverse"
+        : "";
 
     return (
       <button
@@ -62,7 +66,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizeClasses[size],
           iconSpacing,
           fullWidth && "w-full",
-          className
+          className,
         )}
         disabled={isDisabled}
         {...props}
@@ -77,7 +81,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

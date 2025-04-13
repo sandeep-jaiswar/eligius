@@ -70,7 +70,7 @@ const TextArea = ({
           "border-gray-400": disabled,
           "focus:ring-gray-300": disabled,
         },
-        className
+        className,
       )}
     />
   );

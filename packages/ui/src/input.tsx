@@ -35,7 +35,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
    * Optional class names for custom styling.
    */
   className?: string;
-};
+}
 
 const Input = ({
   value,
@@ -47,7 +47,8 @@ const Input = ({
   className,
   ...props
 }: InputProps) => {
-  const errorMessage = typeof error === "string" ? error : "This field is required";
+  const errorMessage =
+    typeof error === "string" ? error : "This field is required";
 
   return (
     <div className="relative">
@@ -64,17 +65,14 @@ const Input = ({
             "border-red-500": error,
             "bg-gray-100 cursor-not-allowed": disabled,
           },
-          className
+          className,
         )}
         aria-invalid={error ? "true" : "false"}
         aria-describedby={error ? "input-error" : undefined}
         {...props}
       />
       {error && (
-        <div
-          id="input-error"
-          className="absolute text-xs text-red-500 mt-1"
-        >
+        <div id="input-error" className="absolute text-xs text-red-500 mt-1">
           {errorMessage}
         </div>
       )}

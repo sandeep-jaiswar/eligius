@@ -1,18 +1,16 @@
 {
-  "extends": "@eligius/typescript-config/nextjs.json",
+  "extends": "@eligius/typescript-config/react-library.json",
   "compilerOptions": {
     "plugins": [
       {
-        "name": "next"
+        "name": "react"
       }
-    ]
+    ],
+    "jsx": "react-jsx",
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    "next.config.ts",
-    ".next/types/**/*.ts"
+    "**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }

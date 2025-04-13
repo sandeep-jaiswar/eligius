@@ -25,7 +25,12 @@ type SnackbarProps = {
   };
 };
 
-const Snackbar = ({ message, duration = 3000, onClose, action }: SnackbarProps) => {
+const Snackbar = ({
+  message,
+  duration = 3000,
+  onClose,
+  action,
+}: SnackbarProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Automatically hide snackbar after the duration

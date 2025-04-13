@@ -10,7 +10,22 @@ type TypographyProps = {
   /**
    * Defines the type of typography element (e.g., h1, h2, p, span, etc.)
    */
-  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "section" | "aside" | "footer" | "header" | "article" | "nav" | "main";
+  variant:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "p"
+    | "span"
+    | "section"
+    | "aside"
+    | "footer"
+    | "header"
+    | "article"
+    | "nav"
+    | "main";
 
   /**
    * Optional className for additional styling.
@@ -31,7 +46,13 @@ type TypographyProps = {
   /**
    * Optional font size (default: "text-base").
    */
-  fontSize?: "text-xs" | "text-sm" | "text-base" | "text-lg" | "text-xl" | "text-2xl";
+  fontSize?:
+    | "text-xs"
+    | "text-sm"
+    | "text-base"
+    | "text-lg"
+    | "text-xl"
+    | "text-2xl";
 };
 
 const Typography = ({
@@ -51,7 +72,7 @@ const Typography = ({
         fontWeight,
         fontSize,
         "leading-relaxed",
-        className
+        className,
       )}
     >
       {children}

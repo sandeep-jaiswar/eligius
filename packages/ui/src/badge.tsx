@@ -65,7 +65,7 @@ const Badge = ({
           "rounded-full": rounded,
           "rounded-lg": !rounded, // Optionally support square corners
         },
-        className
+        className,
       )}
     >
       {children}

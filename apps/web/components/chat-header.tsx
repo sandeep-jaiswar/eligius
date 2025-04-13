@@ -1,7 +1,7 @@
-import Link from "next/link"
-import Avatar from "@eligius/ui/avatar"
-import Button from "@eligius/ui/button"
-import { Bell, Settings, LogOut } from "lucide-react"
+import Link from "next/link";
+import Avatar from "@eligius/ui/avatar";
+import Button from "@eligius/ui/button";
+import { Bell, Settings, LogOut } from "lucide-react";
 
 export function ChatHeader() {
   return (
@@ -27,10 +27,14 @@ export function ChatHeader() {
           <Button variant="ghost" size="sm">
             <LogOut className="h-5 w-5 text-gray-600" />
           </Button>
-          <Avatar alt="user" src="/placeholder.svg?height=40&width=40" initials="U" className="h-10 w-10">
-          </Avatar>
+          <Avatar
+            alt="user"
+            src="/placeholder.svg?height=40&width=40"
+            initials="U"
+            className="h-10 w-10"
+          ></Avatar>
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -47,7 +47,7 @@ const Switch = ({
             "bg-gray-400": !checked,
             "bg-blue-500": checked,
             "cursor-not-allowed opacity-50": disabled,
-          }
+          },
         )}
       >
         <span
@@ -56,7 +56,7 @@ const Switch = ({
             {
               "translate-x-6": checked,
               "translate-x-1": !checked,
-            }
+            },
           )}
         />
       </button>
