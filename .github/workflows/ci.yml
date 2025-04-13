@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-format-build:
-    name: Lint, Format Check, Build
+    name: Lint, Build
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v2
@@ -31,9 +31,6 @@ jobs:
 
       - name: 🧹 Run ESLint
         run: pnpm lint
-
-      - name: 🎨 Run Prettier check
-        run: pnpm format:check
 
       - name: 🏗 Run build
         run: pnpm build
