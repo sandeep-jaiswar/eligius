@@ -30,7 +30,12 @@ export const Default: Story = {
         >
           Open Modal
         </button>
-        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <div className="p-4">
+            <p>This is some content inside the modal.</p>
+            <p className="mt-2">You can add any React components here.</p>
+          </div>
+        </Modal>
       </div>
     );
   },
@@ -52,7 +57,12 @@ export const LargeModal: Story = {
         >
           Open Large Modal
         </button>
-        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <div className="p-4">
+            <p>This is an example of content in a large modal.</p>
+            <p className="mt-2">Notice how it adapts to the larger size.</p>
+          </div>
+        </Modal>
       </div>
     );
   },
@@ -66,6 +76,10 @@ export const LargeModal: Story = {
 export const ModalWithAction: Story = {
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false);
+    const handleAction = () => {
+      alert("Action confirmed!");
+      setIsOpen(false);
+    };
     return (
       <div>
         <button
@@ -74,7 +88,16 @@ export const ModalWithAction: Story = {
         >
           Open Modal with Action
         </button>
-        <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <Modal 
+          {...args} 
+          isOpen={isOpen} 
+          onClose={() => setIsOpen(false)}
+          onAction={handleAction}
+        >
+          <div className="p-4">
+            <p>Click the "{args.actionLabel}" button to trigger the action.</p>
+          </div>
+        </Modal>
       </div>
     );
   },

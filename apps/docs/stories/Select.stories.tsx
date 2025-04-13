@@ -7,7 +7,7 @@ const meta: Meta<typeof Select> = {
   component: Select,
   tags: ["autodocs"],
   argTypes: {
-    error: { control: "boolean", defaultValue: false },
+    error: { control: "text", defaultValue: "" },
     disabled: { control: "boolean", defaultValue: false },
   },
 };
@@ -49,18 +49,12 @@ export const WithError: Story = {
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
       setSelectedValue(e.target.value);
 
-    const options = [
-      { value: "1", label: "Option 1" },
-      { value: "2", label: "Option 2" },
-      { value: "3", label: "Option 3" },
-    ];
-
     return (
       <Select
         {...args}
         value={selectedValue}
         onChange={handleChange}
-        options={options}
+        options={OPTIONS}
       />
     );
   },
