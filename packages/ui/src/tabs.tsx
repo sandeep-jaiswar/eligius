@@ -1,79 +1,114 @@
-import React, { useState } from "react";
-import { clsx } from "clsx";
+// Tabs.tsx
 
-type TabProps = {
-  /**
-   * The label to display in the tab.
-   */
-  children: React.ReactNode;
+import React, { createContext, useContext, useState } from "react"
+import { clsx } from "clsx"
 
-  /**
-   * Whether the tab is active or not.
-   */
-  isActive?: boolean;
+type TabsContextType = {
+  activeTab: string
+  setActiveTab: (value: string) => void
+}
 
-  /**
-   * A callback to handle tab selection.
-   */
-  onClick?: () => void;
-};
+const TabsContext = createContext<TabsContextType | null>(null)
 
-const Tab = ({ children, isActive, onClick }: TabProps) => (
-  <button
-    onClick={onClick}
-    role="tab"
-    aria-selected={isActive}
-    className={clsx(
-      "px-4 py-2 text-sm font-medium",
-      {
-        "text-blue-600 border-b-2 border-blue-600": isActive,
-        "text-gray-600 hover:text-blue-600": !isActive,
-      },
-      "focus:outline-none"
-    )}
+type TabsRootProps = {
+  children: React.ReactNode
+  value?: string
+  onValueChange?: (value: string) => void
+  className?: string
+}
+
+const Tabs = ({ children, value, onValueChange, className }: TabsRootProps) => {
+  const [internalValue, setInternalValue] = useState("0")
+  const activeTab = value ?? internalValue
+
+  const setActiveTab = (val: string) => {
+    onValueChange?.(val)
+    if (value === undefined) {
+      setInternalValue(val)
+    }
+  }
+
+  return (
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+      <div className={clsx("w-full", className)}>{children}</div>
+    </TabsContext.Provider>
+  )
+}
+
+// Tabs.List
+const TabsList = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div
+    role="tablist"
+    className={clsx("flex items-center space-x-2 border-b", className)}
   >
     {children}
-  </button>
-);
+  </div>
+)
 
-type TabsProps = {
-  /**
-   * The children will be a list of `Tab` components and corresponding `TabPanel` components.
-   */
-  children: React.ReactNode;
-};
+// Tabs.Trigger
+const TabsTrigger = ({
+  value,
+  children,
+  className,
+}: {
+  value: string
+  children: React.ReactNode
+  className?: string
+}) => {
+  const context = useContext(TabsContext)
+  if (!context) throw new Error("TabsTrigger must be used within <Tabs>")
 
-const Tabs = ({ children }: TabsProps) => {
-  const [activeTab, setActiveTab] = useState<number>(0);
+  const isActive = context.activeTab === value
 
-  // Extract the tabs and tab panels from the children
-  const tabs = React.Children.toArray(children).filter(
-    (child) => React.isValidElement(child) && child.type === Tab
-  );
-  const tabPanels = React.Children.toArray(children).filter(
-    (child) => !React.isValidElement(child) || child.type !== Tab
-  );
   return (
-    <div className="tabs-container">
-      <div role="tablist" className="flex space-x-4" aria-label="Tabs">
-        {tabs.map((tab, index) => (
-          React.cloneElement(tab as React.ReactElement, {
-            isActive: activeTab === index,
-            onClick: () => setActiveTab(index),
-            id: `tab-${index}`,
-            'aria-controls': `panel-${index}`,
-          })
-        ))}
-      </div>
-      <div 
-        role="tabpanel" 
-        id={`panel-${activeTab}`}
-        aria-labelledby={`tab-${activeTab}`}
-      >
-        {tabPanels[activeTab]}
-      </div>
-    </div>
-  );
-};
+    <button
+      role="tab"
+      aria-selected={isActive}
+      aria-controls={`panel-${value}`}
+      id={`tab-${value}`}
+      className={clsx(
+        "px-4 py-2 text-sm font-medium transition-colors",
+        isActive
+          ? "text-blue-600 border-b-2 border-blue-600"
+          : "text-gray-600 hover:text-blue-600 border-b-2 border-transparent",
+        className
+      )}
+      onClick={() => context.setActiveTab(value)}
+    >
+      {children}
+    </button>
+  )
+}
 
-export { Tabs, Tab };
+// Tabs.Content
+const TabsContent = ({
+  value,
+  children,
+  className,
+}: {
+  value: string
+  children: React.ReactNode
+  className?: string
+}) => {
+  const context = useContext(TabsContext)
+  if (!context) throw new Error("TabsContent must be used within <Tabs>")
+
+  if (context.activeTab !== value) return null
+
+  return (
+    <div
+      role="tabpanel"
+      id={`panel-${value}`}
+      aria-labelledby={`tab-${value}`}
+      className={clsx("pt-4", className)}
+    >
+      {children}
+    </div>
+  )
+}
+
+Tabs.List = TabsList
+Tabs.Trigger = TabsTrigger
+Tabs.Content = TabsContent
+
+export default Tabs;

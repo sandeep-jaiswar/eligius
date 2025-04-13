@@ -4,7 +4,7 @@ interface SpinnerProps {
   size?: "xs" | "sm" | "md" | "lg";
 }
 
-export const Spinner = ({ size = "md" }: SpinnerProps) => {
+const Spinner = ({ size = "md" }: SpinnerProps) => {
   const sizeMap = {
     xs: "h-3 w-3",
     sm: "h-4 w-4",
@@ -34,3 +34,5 @@ export const Spinner = ({ size = "md" }: SpinnerProps) => {
     </svg>
   );
 };
+
+export default Spinner;

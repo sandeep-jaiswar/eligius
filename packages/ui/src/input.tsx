@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 
-type InputProps = {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * The current value of the input.
    */

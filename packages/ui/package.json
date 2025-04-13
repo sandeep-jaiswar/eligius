@@ -1,19 +1,31 @@
 {
   "name": "@eligius/ui",
   "version": "0.0.0",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "files": [
     "dist"
   ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "style": "dist/index.css",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
     "./styles.css": "./dist/index.css",
-    "./*": "./src/*.tsx"
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.js"
+    }
   },
   "license": "MIT",
   "scripts": {
-    "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
+    "build": "tsup src/**/*.{ts,tsx} --dts --format esm,cjs --out-dir dist --clean && npm run build:css",
+    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "check-types": "tsc --noEmit",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
     "lint": "eslint src --max-warnings 0"
@@ -30,9 +42,11 @@
     "eslint": "^9.23.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
+    "tsup": "^8.4.0",
     "typescript": "5.8.2"
   },
   "dependencies": {
+    "@types/react-dom": "^19.0.4",
     "clsx": "^2.1.1"
   }
 }

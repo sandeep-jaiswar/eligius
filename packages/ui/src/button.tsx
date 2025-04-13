@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
 import { clsx } from "clsx";
-import { Spinner } from "./spinner"; // optional loading spinner component
+import Spinner from "./spinner"; // optional loading spinner component
 
 type Variant = "primary" | "secondary" | "danger" | "outline" | "ghost";
 type Size = "xs" | "sm" | "md" | "lg";
@@ -14,7 +14,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconPosition?: "start" | "end";
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -81,3 +81,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = "Button";
+
+export default Button;

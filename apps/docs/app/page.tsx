@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card } from "@eligius/ui/card";
+import Card from "@eligius/ui/card";
 
 function Gradient({
   conic,
