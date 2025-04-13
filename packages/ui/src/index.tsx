@@ -16,5 +16,4 @@ export { default as Spinner } from "./spinner";
 export { default as Switch } from "./switch";
 export { default as Tabs } from "./tabs";
 export { default as Textarea } from "./textarea";
-export { default as Tooltip } from "./tooltip";
 export { default as Typography } from "./typography";
