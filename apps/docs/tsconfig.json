@@ -3,9 +3,10 @@
   "compilerOptions": {
     "plugins": [
       {
-        "name": "next"
+        "name": "react"
       }
-    ]
+    ],
+    "jsx": "react-jsx",
   },
   "include": [
     "**/*.ts",
