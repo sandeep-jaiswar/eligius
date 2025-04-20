@@ -17,7 +17,7 @@ export default function Home() {
                 friends in a safe and friendly environment.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Link href="/login">
+                <Link href="/chat">
                   <Button
                     size="lg"
                     variant="primary"

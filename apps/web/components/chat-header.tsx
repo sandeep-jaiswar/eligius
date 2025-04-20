@@ -2,6 +2,7 @@ import Link from "next/link";
 import Avatar from "@eligius/ui/avatar";
 import Button from "@eligius/ui/button";
 import { Bell, Settings, LogOut } from "lucide-react";
+import LogoutButton from "./logout-button";
 
 export function ChatHeader() {
   return (
@@ -24,9 +25,7 @@ export function ChatHeader() {
           <Button variant="ghost" size="sm">
             <Settings className="h-5 w-5 text-gray-600" />
           </Button>
-          <Button variant="ghost" size="sm">
-            <LogOut className="h-5 w-5 text-gray-600" />
-          </Button>
+          <LogoutButton />
           <Avatar
             alt="user"
             src="/placeholder.svg?height=40&width=40"

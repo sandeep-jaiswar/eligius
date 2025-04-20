@@ -19,6 +19,7 @@ import { ChatHeader } from "../../components/chat-header";
 import { ChatMessage } from "../../components/chat-message";
 import { FriendsList } from "../../components/friends-list";
 import { useMobile } from "../../hooks/use-mobile";
+import { useUserSession } from "../../hooks/use-session";
 
 type Message = {
   id: string;
@@ -35,8 +36,11 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isConnected, setIsConnected] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
+  const { user, isLoading } = useUserSession();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
+
+  console.log(user)
 
   const currentUser = {
     id: "user1",
@@ -142,6 +146,8 @@ export default function ChatPage() {
       setMessages([welcomeMessage]);
     }, 1500);
   };
+
+  if(isLoading) return;
 
   return (
     <div className="flex h-screen flex-col bg-gray-50">
