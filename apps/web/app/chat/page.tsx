@@ -36,11 +36,9 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isConnected, setIsConnected] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
-  const { user, isLoading } = useUserSession();
+  const { isLoading } = useUserSession();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
-
-  console.log(user)
 
   const currentUser = {
     id: "user1",

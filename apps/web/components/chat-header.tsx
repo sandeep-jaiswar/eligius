@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Avatar from "@eligius/ui/avatar";
 import Button from "@eligius/ui/button";
-import { Bell, Settings, LogOut } from "lucide-react";
+import { Bell, Settings } from "lucide-react";
 import LogoutButton from "./logout-button";
 
 export function ChatHeader() {
