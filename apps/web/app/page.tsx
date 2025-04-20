@@ -32,15 +32,16 @@ export default function Home() {
                 in a safe and friendly environment.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Button
-                  size="lg"
-                  variant="primary"
-                  icon={<ArrowRight className="ml-2 h-4 w-4" />}
-                  iconPosition="end"
-                  onClick={onStartChatButtonClick}
-                >
-                  Start Chatting
-                </Button>
+                <Link href="/chat">
+                  <Button
+                    size="lg"
+                    variant="primary"
+                    icon={<ArrowRight className="ml-2 h-4 w-4" />}
+                    iconPosition="end"
+                  >
+                    Start Chatting
+                  </Button>
+                </Link>
                 <Link href="/about">
                   <Button
                     size="lg"

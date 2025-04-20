@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/**/*.{ts,tsx} --dts --format esm,cjs --out-dir dist --clean && npm run build:css",
+    "build": "tsup src/**/*.{ts,tsx} --dts && npm run build:css",
     "build:css": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "check-types": "tsc --noEmit",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
