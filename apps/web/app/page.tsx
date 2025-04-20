@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import Link from "next/link";
 import Button from "@eligius/ui/button";
 import { ArrowRight } from "lucide-react";
