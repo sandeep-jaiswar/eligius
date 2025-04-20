@@ -5,8 +5,6 @@ import {
   Send,
   ImageIcon,
   Smile,
-  UserPlus,
-  Flag,
   X,
   RefreshCw,
 } from "lucide-react";
@@ -22,22 +20,10 @@ import {
 import Button from "@eligius/ui/button";
 import Input from "@eligius/ui/input";
 import Tabs from "@eligius/ui/tabs";
-import Avatar from "@eligius/ui/avatar";
 import Card from "@eligius/ui/card";
 import { ChatMessage as ChatMessageComponent } from "../../components/chat-message";
 import { v7 as uuid } from "uuid";
-
-const currentUser = {
-  id: "me",
-  name: "You",
-  avatar: "/placeholder.svg",
-};
-
-const stranger = {
-  id: "anon",
-  name: "Stranger",
-  avatar: "/placeholder.svg",
-};
+import { useUserSession } from "../../hooks/use-session";
 
 export default function ChatPage() {
   const id = uuid();
@@ -48,8 +34,9 @@ export default function ChatPage() {
   const [events, setEvents] = useState<ChatEvent[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
+  const { user } = useUserSession();
 
-  const { socket, sendMessage, reconnect, isConnected } = useSocket({
+  const { socket, sendMessage, reconnect, isConnected, serverId } = useSocket({
     onMessageStream: (msg) => {
       setMessages((prev) => [...prev, msg]);
     },
@@ -70,7 +57,7 @@ export default function ChatPage() {
     if (!trimmed || !socket) return;
 
     const newMessage: ChatMessage = {
-      senderId: currentUser.id,
+      senderId: serverId,
       content: trimmed,
       timestamp: new Date().toLocaleTimeString(),
     };
@@ -91,7 +78,7 @@ export default function ChatPage() {
     if (!file || !socket) return;
 
     const imageMessage: ChatMessage = {
-      senderId: currentUser.id,
+      senderId: serverId,
       content: "Image sent",
       timestamp: new Date().toLocaleTimeString(),
       isImage: true,
@@ -99,10 +86,6 @@ export default function ChatPage() {
 
     sendMessage(imageMessage);
   };
-
-  const handleAddFriend = () => console.log("Add friend", stranger.name);
-  const handleReportUser = () => console.log("Report user", stranger.name);
-  const handleEndChat = () => socket?.close();
   const handleFindNewChat = () => {
     reconnect?.();
     setMessages([]);
@@ -110,11 +93,10 @@ export default function ChatPage() {
 
   const TabButton = ({ value, label }: { value: string; label: string }) => (
     <button
-      className={`p-2 text-sm font-medium transition-colors ${
-        activeTab === value
+      className={`p-2 text-sm font-medium transition-colors ${activeTab === value
           ? "bg-white text-black"
           : "bg-gray-100 text-gray-600"
-      }`}
+        }`}
       onClick={() => setActiveTab(value)}
     >
       {label}
@@ -190,16 +172,12 @@ export default function ChatPage() {
                       ...msg,
                       id,
                     }}
-                    isOwnMessage={msg.senderId === currentUser.id}
+                    isOwnMessage={msg.senderId === serverId}
                     senderName={
-                      msg.senderId === currentUser.id
-                        ? currentUser.name
-                        : stranger.name
+                      msg.senderId ?? serverId
                     }
                     senderAvatar={
-                      msg.senderId === currentUser.id
-                        ? currentUser.avatar
-                        : stranger.avatar
+                      `${user?.image}`
                     }
                   />
                 ))}

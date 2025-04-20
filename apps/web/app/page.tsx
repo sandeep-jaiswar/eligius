@@ -91,7 +91,7 @@ export default function Home() {
       <section className="py-16">
         <div className="container">
           <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">
-            Why Choose ChatConnect?
+            Why Choose ChatWithStrangers?
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {[

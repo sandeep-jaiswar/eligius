@@ -14,7 +14,7 @@ export function ChatHeader() {
               <div className="h-6 w-6 rounded-full bg-gradient-to-r from-blue-500 to-violet-500" />
             </div>
           </div>
-          <span className="text-xl font-bold text-gray-800">ChatConnect</span>
+          <span className="text-xl font-bold text-gray-800">ChatWithStrangers</span>
         </Link>
 
         <div className="flex items-center gap-2">

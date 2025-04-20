@@ -23,6 +23,7 @@ export type Notification = {
 export interface ServerToClientEvents {
   connect: () => void;
   disconnect: () => void;
+  "server-stream": (id: string) => void;
   "event-stream": (msg: ChatEvent) => void;
   "message-stream": (msg: ChatMessage) => void;
   "action-stream": (msg: Notification) => void;
@@ -48,6 +49,11 @@ export const useSocket = ({
     ClientToServerEvents
   > | null>(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [serverId, setServerId] = useState('');
+
+  const onServerStream = (id: string)=> {
+    setServerId(id)
+  };
 
   const connect = () => {
     if (socketRef.current) return;
@@ -74,6 +80,7 @@ export const useSocket = ({
     socket.on("event-stream", onEventStream);
     socket.on("action-stream", onActionStream);
     socket.on("message-stream", onMessageStream);
+    socket.on("server-stream", onServerStream);
   };
 
   const disconnect = () => {
@@ -103,5 +110,6 @@ export const useSocket = ({
     reconnect,
     isConnected,
     disconnect,
+    serverId
   };
 };
