@@ -146,7 +146,6 @@ export default function ChatPage() {
   return (
     <div className="flex h-screen flex-col bg-gray-50">
       <ChatHeader />
-
       <div className="container mx-auto flex flex-1 flex-col overflow-hidden p-4 md:flex-row md:gap-4">
         <Tabs
           value={activeTab}
@@ -248,7 +247,9 @@ export default function ChatPage() {
                       <Input
                         placeholder="Type a message..."
                         value={message}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          setMessage(e.target.value)
+                        }
                         onKeyDown={handleKeyDown}
                         className="rounded-full border-gray-300"
                       />

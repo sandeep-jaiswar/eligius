@@ -88,9 +88,9 @@ export const ModalWithAction: Story = {
         >
           Open Modal with Action
         </button>
-        <Modal 
-          {...args} 
-          isOpen={isOpen} 
+        <Modal
+          {...args}
+          isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           onAction={handleAction}
         >

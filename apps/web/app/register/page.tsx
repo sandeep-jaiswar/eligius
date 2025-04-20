@@ -56,7 +56,9 @@ export default function RegisterPage() {
                   placeholder="John Doe"
                   className="pl-10"
                   value={name}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setName(e.target.value)
+                  }
                   required
                 />
               </div>
@@ -71,7 +73,9 @@ export default function RegisterPage() {
                   placeholder="name@example.com"
                   className="pl-10"
                   value={email}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setEmail(e.target.value)
+                  }
                   required
                 />
               </div>
@@ -86,7 +90,9 @@ export default function RegisterPage() {
                   placeholder="••••••••"
                   className="pl-10"
                   value={password}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setPassword(e.target.value)
+                  }
                   required
                 />
               </div>

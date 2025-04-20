@@ -1,10 +1,25 @@
+"use client";
+
+import axios from "axios";
 import Link from "next/link";
 import Button from "@eligius/ui/button";
 import { ArrowRight } from "lucide-react";
+import GlobalHeader from "../components/global-header";
+import GlobalFooter from "../components/global-footer";
 
 export default function Home() {
+  const onStartChatButtonClick = async () => {
+    try {
+      const { data } = await axios.get("/api/session");
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <main className="flex-1">
+      <GlobalHeader />
+
       <section className="bg-gradient-to-b from-white to-gray-50 py-20">
         <div className="container">
           <div className="grid gap-12 md:grid-cols-2 md:items-center">
@@ -13,20 +28,19 @@ export default function Home() {
                 Connect with new people around the world
               </h1>
               <p className="text-lg text-gray-600">
-                Chat with random strangers, share moments, and make new
-                friends in a safe and friendly environment.
+                Chat with random strangers, share moments, and make new friends
+                in a safe and friendly environment.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Link href="/login">
-                  <Button
-                    size="lg"
-                    variant="primary"
-                    icon={<ArrowRight className="ml-2 h-4 w-4" />}
-                    iconPosition="end"
-                  >
-                    Start Chatting
-                  </Button>
-                </Link>
+                <Button
+                  size="lg"
+                  variant="primary"
+                  icon={<ArrowRight className="ml-2 h-4 w-4" />}
+                  iconPosition="end"
+                  onClick={onStartChatButtonClick}
+                >
+                  Start Chatting
+                </Button>
                 <Link href="/about">
                   <Button
                     size="lg"
@@ -113,6 +127,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <GlobalFooter />
     </main>
   );
 }
