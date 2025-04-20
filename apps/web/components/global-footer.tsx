@@ -34,7 +34,8 @@ const GlobalFooter = () => {
             </Link>
           </div>
           <div className="text-sm text-gray-500">
-            © {new Date().getFullYear()} ChatWithStrangers. All rights reserved.
+            © {new Date().getFullYear()} ChatWithStrangers. All rights
+            reserved.
           </div>
         </div>
       </div>

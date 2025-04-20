@@ -2,8 +2,6 @@ import "./globals.css";
 import "@eligius/ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import GlobalHeader from "../components/global-header";
-import GlobalFooter from "../components/global-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

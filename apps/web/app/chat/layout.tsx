@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import "../globals.css";
 import "@eligius/ui/styles.css";
@@ -8,17 +8,15 @@ import { SessionProvider } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="en">
-            <body className={inter.className}>
-                <SessionProvider>
-                {children}
-                </SessionProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <SessionProvider>{children}</SessionProvider>
+      </body>
+    </html>
+  );
 }

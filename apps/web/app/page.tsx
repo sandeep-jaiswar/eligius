@@ -8,14 +8,6 @@ import GlobalHeader from "../components/global-header";
 import GlobalFooter from "../components/global-footer";
 
 export default function Home() {
-  const onStartChatButtonClick = async () => {
-    try {
-      const { data } = await axios.get("/api/session");
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <main className="flex-1">
       <GlobalHeader />

@@ -49,10 +49,10 @@ export const useSocket = ({
     ClientToServerEvents
   > | null>(null);
   const [isConnected, setIsConnected] = useState(false);
-  const [serverId, setServerId] = useState('');
+  const [serverId, setServerId] = useState("");
 
-  const onServerStream = (id: string)=> {
-    setServerId(id)
+  const onServerStream = (id: string) => {
+    setServerId(id);
   };
 
   const connect = () => {
@@ -110,6 +110,6 @@ export const useSocket = ({
     reconnect,
     isConnected,
     disconnect,
-    serverId
+    serverId,
   };
 };

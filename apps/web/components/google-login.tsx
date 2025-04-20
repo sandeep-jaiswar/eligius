@@ -4,14 +4,15 @@ import Button from "@eligius/ui/button";
 import { signIn } from "next-auth/react";
 
 export function GoogleLogin() {
-
   return (
     <Button
       variant="outline"
       className="w-full border-gray-300 bg-white text-gray-800 hover:bg-gray-50"
-      onClick={() => signIn("google", {
-        callbackUrl: '/'
-      })}
+      onClick={() =>
+        signIn("google", {
+          callbackUrl: "/",
+        })
+      }
     >
       <svg
         className="mr-2 h-4 w-4"

@@ -145,7 +145,7 @@ export default function ChatPage() {
     }, 1500);
   };
 
-  if(isLoading) return;
+  if (isLoading) return;
 
   return (
     <div className="flex h-screen flex-col bg-gray-50">

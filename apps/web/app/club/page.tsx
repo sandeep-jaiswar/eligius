@@ -1,13 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, ChangeEvent } from "react";
-import {
-  Send,
-  ImageIcon,
-  Smile,
-  X,
-  RefreshCw,
-} from "lucide-react";
+import { Send, ImageIcon, Smile, X, RefreshCw } from "lucide-react";
 import { FriendsList } from "../../components/friends-list";
 import { useMobile } from "../../hooks/use-mobile";
 import {
@@ -30,7 +24,9 @@ export default function ChatPage() {
   const [activeTab, setActiveTab] = useState("chat");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [actions, setActions] = useState<Notification[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [events, setEvents] = useState<ChatEvent[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
@@ -93,10 +89,11 @@ export default function ChatPage() {
 
   const TabButton = ({ value, label }: { value: string; label: string }) => (
     <button
-      className={`p-2 text-sm font-medium transition-colors ${activeTab === value
+      className={`p-2 text-sm font-medium transition-colors ${
+        activeTab === value
           ? "bg-white text-black"
           : "bg-gray-100 text-gray-600"
-        }`}
+      }`}
       onClick={() => setActiveTab(value)}
     >
       {label}
@@ -173,12 +170,8 @@ export default function ChatPage() {
                       id,
                     }}
                     isOwnMessage={msg.senderId === serverId}
-                    senderName={
-                      msg.senderId ?? serverId
-                    }
-                    senderAvatar={
-                      `${user?.image}`
-                    }
+                    senderName={msg.senderId ?? serverId}
+                    senderAvatar={`${user?.image}`}
                   />
                 ))}
                 <div ref={messagesEndRef} />
