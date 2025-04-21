@@ -3,14 +3,11 @@
 import Link from "next/link";
 import Button from "@eligius/ui/button";
 import { ArrowRight } from "lucide-react";
-import GlobalHeader from "../components/global-header";
 import GlobalFooter from "../components/global-footer";
 
 export default function Home() {
   return (
-    <main className="flex-1">
-      <GlobalHeader />
-
+    <>
       <section className="bg-gradient-to-b from-white to-gray-50 py-20">
         <div className="container">
           <div className="grid gap-12 md:grid-cols-2 md:items-center">
@@ -78,7 +75,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="py-16">
         <div className="container">
           <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">
@@ -120,6 +116,6 @@ export default function Home() {
         </div>
       </section>
       <GlobalFooter />
-    </main>
+    </>
   );
 }
