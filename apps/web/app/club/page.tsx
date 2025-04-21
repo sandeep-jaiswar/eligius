@@ -10,17 +10,14 @@ import {
   type ChatMessage,
   type Notification,
 } from "../../hooks/use-socket";
-
 import Button from "@eligius/ui/button";
 import Input from "@eligius/ui/input";
 import Tabs from "@eligius/ui/tabs";
 import Card from "@eligius/ui/card";
 import { ChatMessage as ChatMessageComponent } from "../../components/chat-message";
-import { v7 as uuid } from "uuid";
 import { useUserSession } from "../../hooks/use-session";
 
 export default function ChatPage() {
-  const id = uuid();
   const [activeTab, setActiveTab] = useState("chat");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -164,10 +161,10 @@ export default function ChatPage() {
               <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
                 {messages.map((msg) => (
                   <ChatMessageComponent
-                    key={uuid()}
+                    key={`${msg.senderId}-${msg.timestamp}`}
                     message={{
                       ...msg,
-                      id,
+                      id: `${msg.senderId}-${msg.timestamp}`,
                     }}
                     isOwnMessage={msg.senderId === serverId}
                     senderName={msg.senderId ?? serverId}

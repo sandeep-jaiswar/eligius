@@ -68,12 +68,12 @@ export const useSocket = ({
     socketRef.current = socket;
 
     socket.on("connect", () => {
-      console.log("✅ Connected to WebSocket");
+      console.log("Connected to WebSocket");
       setIsConnected(true);
     });
 
     socket.on("disconnect", () => {
-      console.log("❌ Disconnected from WebSocket");
+      console.log("Disconnected from WebSocket");
       setIsConnected(false);
     });
 
