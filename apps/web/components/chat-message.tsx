@@ -6,7 +6,7 @@ type ChatMessageProps = {
   message: {
     id: string;
     content: string;
-    timestamp: Date;
+    timestamp: string;
     isImage?: boolean;
     isGif?: boolean;
   };
@@ -21,12 +21,6 @@ export function ChatMessage({
   senderName,
   senderAvatar,
 }: ChatMessageProps) {
-  const formattedTime = new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  }).format(message.timestamp);
-
   return (
     <div
       className={clsx(
@@ -78,7 +72,7 @@ export function ChatMessage({
             isOwnMessage ? "text-blue-100" : "text-gray-500",
           )}
         >
-          {formattedTime}
+          {message.timestamp}
         </div>
       </div>
     </div>
